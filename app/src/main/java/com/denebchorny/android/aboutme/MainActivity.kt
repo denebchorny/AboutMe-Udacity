@@ -6,36 +6,40 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.denebchorny.android.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var btnDone: Button
-    lateinit var etNickName: EditText
-    lateinit var tvNickName: TextView
+    private lateinit var binding: ActivityMainBinding
+
+    private val myName: MyName = MyName("Deneb Chorny")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        btnDone = findViewById(R.id.btnDone)
-        etNickName = findViewById(R.id.etNickName)
-        tvNickName = findViewById(R.id.tvNickname)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        btnDone.setOnClickListener { onDoneClicked(it) }
+        binding.myName = myName
+
+        binding.btnDone.setOnClickListener { onDoneClicked(it) }
     }
 
     private fun onDoneClicked(view: View) {
-        if(etNickName.text.isNullOrEmpty()) return
+        if (binding.etNickName.text.isNullOrEmpty()) return
 
-        view.visibility = GONE
-        etNickName.visibility = GONE
-        tvNickName.visibility = VISIBLE
+        binding.apply {
+            //tvNickname.text = binding.etNickName.text
 
-        tvNickName.text = etNickName.text
+            myName?.nickname = etNickName.text.toString()
+
+            invalidateAll()
+
+            btnDone.visibility = GONE
+            etNickName.visibility = GONE
+            tvNickname.visibility = VISIBLE
+        }
 
         // Hide the keyboard.
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

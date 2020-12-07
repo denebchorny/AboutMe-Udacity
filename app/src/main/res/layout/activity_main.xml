@@ -1,71 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingStart="@dimen/spacing_regular"
-    android:paddingEnd="@dimen/spacing_regular"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        style="@style/HeaderStyle"
+    <data>
+        <variable
+            name="myName"
+            type="com.denebchorny.android.aboutme.MyName" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mainactivity_profile_name"
-        android:textAlignment="center" />
-
-    <EditText
-        android:id="@+id/etNickName"
-        style="@style/HeaderStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/mainactivity_what_is_your_nick_name"
-        android:inputType="textPersonName|textImeMultiLine"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/btnDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/spacing_regular"
-        android:fontFamily="@font/roboto"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:text="@string/mainactivity_done" />
-
-    <TextView
-        android:id="@+id/tvNickname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       style="@style/HeaderStyle"
-        android:textAlignment="center"
-        android:visibility="gone"
-        tools:visibility="visible"
-        tools:text="Name" />
-
-    <ImageView
-        android:id="@+id/tvAvatar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_regular"
-        android:contentDescription="@string/contentdescription_yellow_star"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
-
-    <ScrollView
-        android:id="@+id/svBio"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/spacing_regular"
+        android:paddingEnd="@dimen/spacing_regular"
+        tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/tvBio"
+            android:id="@+id/tvHeader"
             style="@style/HeaderStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lineSpacingMultiplier="1.2"
-            android:text="@string/mainactivity_bio_description" />
-    </ScrollView>
+            android:text="@={myName.name}"
+            android:textAlignment="center" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etNickName"
+            style="@style/HeaderStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/mainactivity_what_is_your_nick_name"
+            android:inputType="textPersonName|textImeMultiLine"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btnDone"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:fontFamily="@font/roboto"
+            android:text="@string/mainactivity_done" />
+
+        <TextView
+            android:id="@+id/tvNickname"
+            style="@style/HeaderStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:text="@={myName.nickname}"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/tvAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:contentDescription="@string/contentdescription_yellow_star"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <ScrollView
+            android:id="@+id/svBio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvBio"
+                style="@style/HeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/mainactivity_bio_description" />
+        </ScrollView>
+
+    </LinearLayout>
+</layout>
