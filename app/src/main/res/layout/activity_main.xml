@@ -16,6 +16,36 @@
         android:text="@string/mainactivity_profile_name"
         android:textAlignment="center" />
 
+    <EditText
+        android:id="@+id/etNickName"
+        style="@style/HeaderStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/mainactivity_what_is_your_nick_name"
+        android:inputType="textPersonName|textImeMultiLine"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_regular"
+        android:fontFamily="@font/roboto"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="@string/mainactivity_done" />
+
+    <TextView
+        android:id="@+id/tvNickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       style="@style/HeaderStyle"
+        android:textAlignment="center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="Name" />
+
     <ImageView
         android:id="@+id/tvAvatar"
         android:layout_width="match_parent"
